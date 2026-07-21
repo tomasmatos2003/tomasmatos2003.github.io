@@ -1,8 +1,5 @@
 # tmato.es
 
-Personal portfolio — static site (HTML/CSS/JS), no build step.
-Palette from [pengrey.com](https://pengrey.com/about/), layout from [g0ncal0mf.com](https://g0ncal0mf.com/).
-
 ```
 .
 ├── index.html
