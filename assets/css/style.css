@@ -54,8 +54,8 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 18px; /* Increased base size from 16px */
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   background-image:
     radial-gradient(circle at 10% 0%,  oklch(0.65 0.20 27 / 0.07), transparent 45%),
@@ -191,14 +191,14 @@ a:hover { color: var(--tomato-deep); }
 .section__head { margin-bottom: 1.75rem; }
 .eyebrow {
   display: inline-block; font-family: var(--font-mono);
-  font-size: .78rem; color: var(--tomato);
+  font-size: .9rem; color: var(--tomato);
   letter-spacing: .02em; margin-bottom: .35rem;
 }
 .section__title {
-  font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700;
   letter-spacing: -0.02em; margin: 0; color: var(--foreground);
 }
-.section__lead { color: var(--muted-foreground); margin: 0 0 1.5rem; max-width: 68ch; }
+.section__lead {font-size: 1.15rem; color: var(--muted-foreground); margin: 0 0 1.75rem; max-width: 68ch; }
 .section p { max-width: 72ch; }
 
 .hl { color: var(--leaf); font-weight: 500; }
