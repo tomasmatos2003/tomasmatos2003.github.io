@@ -25,6 +25,24 @@
     });
   }
 
+  // Theme toggle (dark is the default; choice persists)
+  var themeBtn = document.getElementById("themeToggle");
+  var root = document.documentElement;
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function applyTheme(theme) {
+    if (theme === "light") root.setAttribute("data-theme", "light");
+    else root.removeAttribute("data-theme");
+    if (themeMeta) themeMeta.setAttribute("content", theme === "light" ? "#f7f2ea" : "#2e2e33");
+    try { localStorage.setItem("theme", theme); } catch (e) {}
+  }
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      applyTheme(root.getAttribute("data-theme") === "light" ? "dark" : "light");
+    });
+  }
+
   // Highlight the nav link for the section currently in view
   var navAnchors = Array.prototype.slice.call(
     document.querySelectorAll(".nav__links a")

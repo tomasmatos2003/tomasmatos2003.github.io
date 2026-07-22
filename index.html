@@ -18,7 +18,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=3" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4" />
+
+  <!-- Apply saved theme before paint (prevents flash) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <!-- ───────────────────────────── NAVBAR ───────────────────────────── -->
@@ -26,9 +36,23 @@
     <div class="nav__inner">
       <a href="#top" class="nav__brand"><span class="nav__tom">🍅</span>tmatos</a>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light or dark theme">
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="17" height="17" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+          </svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="17" height="17" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.5 14.2A8.4 8.4 0 0 1 9.8 3.5a8.4 8.4 0 1 0 10.7 10.7z"/>
+          </svg>
+        </button>
+
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
 
       <nav class="nav__links" id="navLinks">
         <a href="#about">ABOUT</a>
@@ -41,6 +65,7 @@
         <a href="#projects">PROJECTS</a>
         <a href="#contact">CONTACT</a>
       </nav>
+
     </div>
   </header>
 
@@ -71,6 +96,7 @@
       <!-- </figure> -->
     </section>
 
+
     <!-- ───────────────────────────── ABOUT ───────────────────────────── -->
     <section id="about" class="section">
       <div class="section__head">
@@ -78,13 +104,14 @@
         <h2 class="section__title">About</h2>
       </div>
       <div class="section__body about">
-        <p>I'm Tomás, a Portuguese MSc student in Cybersecurity at the University of Aveiro (DETI/IEETA). My work sits close to the metal — I like taking things apart to understand exactly how they behave.</p>
-        <p>The areas I care about most are <span class="hl">reverse engineering</span>, <span class="hl">binary analysis &amp; exploitation</span>, <span class="hl">applied cryptography</span>, and <span class="hl">Trusted Execution Environment (SGX) security</span>. My master's thesis builds an Intel SGX–backed FIDO2 authenticator, so I spend a lot of time between enclave internals, cryptographic protocols, and low-level debugging.</p>
-        <p>Outside of academic work I'm a regular on CTFs, mostly on reversing and pwn, and I'm currently looking to grow into reverse engineering professionally.</p>
+        <p>I'm Tomás Matos. I'm a cybersecurity graduate from the University of Aveiro, Portugal, passionate about reverse engineering, malware analysis and application security.</p>
+        <p>The areas I care about most are <span class="hl">reverse engineering</span>, <span class="hl">binary analysis &amp; exploitation</span>, <span class="hl">applied cryptography</span>, and <span class="hl">Trusted Execution Environment (SGX) security</span>. My master's thesis built an Intel SGX–backed FIDO2 authenticator, which meant a lot of time between enclave internals, cryptographic protocols, and low-level debugging.</p>
+        <p>Outside of academic work I'm used to participating on CTFs, mostly on cryptography, reversing and pwn, and I'm currently looking to grow professionally in reverse engineering and offensive security.</p>
         <ul class="stats">
-          <li><strong>x86/x64 · ARM · SPARC</strong><span>architectures worked</span></li>
-          <li><strong>RE · PWN · CRYPTO</strong><span>main focus areas</span></li>
-          <li><strong>&#8734;</strong><span>hex dumps read</span></li>
+          <li><strong>MSc Cybersecurity</strong><span>University of Aveiro, 2026</span></li>
+          <li><strong>CBFRPro certified</strong><span>binary fuzzing &amp; reversing</span></li>
+          <li><strong>C · Python · Java · Assembly</strong><span>core languages</span></li>
+          <li><strong>Open to opportunities</strong><span>preferable in Portugal</span></li>
         </ul>
       </div>
     </section>
@@ -101,7 +128,8 @@
           <ul>
             <li>Static &amp; dynamic binary analysis</li>
             <li>Multi-architecture disassembly</li>
-            <li>Malware / skimmer triage</li>
+            <li>Malware</li>
+            <li>Android</li>
             <li>Emulation-driven analysis</li>
           </ul>
         </article>
@@ -110,29 +138,27 @@
           <ul>
             <li>Stack overflows &amp; ROP chains</li>
             <li>ret2plt / libc leaks</li>
-            <li>IBT / mitigation-aware exploitation</li>
-            <li>Crash triage</li>
+            <li>Memory leakages</li>
           </ul>
         </article>
         <article class="card">
           <h3>Applied Cryptography</h3>
           <ul>
-            <li>AES-GCM / HKDF / HMAC schemes</li>
-            <li>FIDO2 / CTAP2 protocol internals</li>
-            <li>DCAP remote attestation</li>
-            <li>Key-hierarchy design</li>
-          </ul>
+          <li>Symmetric: AES (GCM / CBC)</li>
+          <li>Asymmetric: RSA, ECC, Diffie-Hellman</li>
+          <li>Hash Functions & MACs</li>
+          <li>Post-Quantum: Lattice-based</li>
+        </ul>
         </article>
         <article class="card">
-          <h3>TEE / SGX Security</h3>
+          <h3>Trusted Execution Environments</h3>
           <ul>
-            <li>Enclave development (EDL/ECALL)</li>
+            <li>SGX, Enclave development (EDL/ECALL)</li>
             <li>Sealed storage &amp; migration</li>
-            <li>EPC limits &amp; key hierarchy</li>
             <li>Quote verification</li>
           </ul>
         </article>
-        <article class="card">
+        <!-- <article class="card">
           <h3>Fuzzing</h3>
           <ul>
             <li>AFL++ instrumentation modes</li>
@@ -140,13 +166,13 @@
             <li>Binary-only (qemu/frida) fuzzing</li>
             <li>boofuzz &amp; crash dedup</li>
           </ul>
-        </article>
+        </article> -->
         <article class="card">
           <h3>Interests</h3>
           <ul>
-            <li>Hiking &amp; trail running</li>
+            <li>Hiking &amp; Running</li>
+            <li>Music, Clarinet</li>
             <li>Low-level systems</li>
-            <li>Protocol archaeology</li>
             <li>CTF culture</li>
           </ul>
         </article>
@@ -163,31 +189,25 @@
         <article class="card">
           <h3>Reverse Engineering</h3>
           <ul class="tags">
-            <li>Ghidra</li><li>GDB</li><li>Unicorn Engine</li><li>objdump</li>
+            <li>Ghidra</li><li>IDA Pro</li><li>GDB</li><li>Unicorn Engine</li><li>objdump</li><li>AFL++</li><li>Jadx</li><li>Frida</li>
           </ul>
         </article>
         <article class="card">
           <h3>Exploitation</h3>
           <ul class="tags">
-            <li>pwntools</li><li>ROPgadget</li><li>gef / pwndbg</li>
+            <li>pwntools</li><li>ROPgadget</li>
           </ul>
         </article>
         <article class="card">
-          <h3>Fuzzing</h3>
+          <h3>Crypto</h3>
           <ul class="tags">
-            <li>AFL++</li><li>boofuzz</li><li>QEMU mode</li><li>Frida mode</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>TEE / Crypto</h3>
-          <ul class="tags">
-            <li>Intel SGX SDK</li><li>DCAP</li><li>OpenSSL</li><li>PyCryptodome</li>
+            <li>Intel SGX SDK</li><li>OpenSSL</li><li>PyCryptodome</li><li>Hashcat</li><li>RsaCracker</li>
           </ul>
         </article>
         <article class="card">
           <h3>Languages</h3>
           <ul class="tags">
-            <li>C / C++</li><li>Python</li><li>Rust</li><li>Bash</li><li>Assembly</li>
+            <li>C / C++</li><li>Python</li><li>Java</li><li>Bash</li><li>Assembly</li>
           </ul>
         </article>
         <article class="card">
@@ -208,25 +228,36 @@
       <div class="section__body timeline">
         <article class="tl">
           <div class="tl__meta">
-            <span class="tl__role">MSc Researcher — SGX / FIDO2</span>
+            <span class="tl__role">Researcher</span>
             <span class="tl__where">IEETA · University of Aveiro</span>
-            <span class="tl__date">2025 – Present</span>
+            <span class="tl__date">2025 – 2026</span>
           </div>
-          <p>Research and implementation for a thesis on securing FIDO2 credentials inside Intel SGX enclaves — sealed credential storage, DCAP attestation and cross-device migration.</p>
-          <ul>
-            <li>Built a credential manager with AES-128-GCM per-row encryption and HKDF-derived keys.</li>
-            <li>Implemented DCAP quote verification (cert-chain parsing, FMSPC/TCB validation) in Python.</li>
-            <li>Debugged the CTAP2 authenticator layer and enclave ABI issues end to end.</li>
+          <!-- <p>Research and development of a mobile application and smart contract
+system on the Polygon L2 blockchain, focused on digitalising Bills of
+Lading (BoL).</p>
+          
+         
+           <p> Designed and implemented mechanisms for secure BoL registration, validation, ownership transfer, and peer-to-peer sharing using blockchain stored data and smart contracts</p>
+           -->
+
+           <ul>
+            <li>Research and development of a mobile application and smart contract system on the Polygon L2 blockchain, focused on digitalising Bills of Lading (BoL).</li>
+            <li>Designed and implemented mechanisms for secure BoL registration, validation, ownership transfer, and peer-to-peer sharing using blockchain stored data and smart contracts.</li>
           </ul>
+         
         </article>
         <!-- TODO: add any internships / part-time / club roles here -->
         <article class="tl">
           <div class="tl__meta">
-            <span class="tl__role">CTF Player — RE &amp; PWN</span>
-            <span class="tl__where">Independent / University teams</span>
-            <span class="tl__date">Ongoing</span>
+            <span class="tl__role">Board Member & CTF Player</span>
+            <span class="tl__where">NUAC - University of Aveiro Cybersecurity</span>
+            <span class="tl__date">2025 - Ongoing</span>
           </div>
-          <p>Sustained competitive practice in reverse engineering and binary exploitation, plus real-world skimmer and malware analysis write-ups.</p>
+          <ul>
+    <li>Organized hands-on cybersecurity workshops covering web security, and reverse engineering for university students.</li>
+    <li>Authored custom challenges (Crypto & OSINT & Reverse) for internal and public CTF competitions organized by NUAC.</li>
+    <li>Competed as an active member of the NUAC CTF team in national and international Capture The Flag competitions.</li>
+  </ul>
         </article>
       </div>
     </section>
@@ -242,33 +273,104 @@
           <h3>MSc in Cybersecurity</h3>
           <p class="card__sub">University of Aveiro · DETI</p>
           <p class="card__date">2024 – 2026</p>
-          <p>Thesis: <em>"Securing FIDO2 Credentials Using Intel SGX"</em> — an enclave-based FIDO2 authenticator with sealed storage, DCAP attestation and cross-device migration. Supervised by André Zúquete and Tomás Oliveira e Silva.</p>
+          <ul>
+            <li><strong>Applied Cryptography:</strong> ECC, DH, RSA, Post-Quantum Lattice-Based Schemes</li>
+            <li><strong>Infrastructure & Network Security:</strong> Network Security Protocols, Perimeter Defense, Security Planning & Architecture, SIEM Deployment</li>
+            <li><strong>Identity & Access Management:</strong> Authentication/Authorization Mechanisms, FIDO2, X.509, PKI</li>
+            <li><strong>Offensive & Defensive Security:</strong> Vulnerability Analysis, Reverse Engineering</li>
+          </ul>
         </article>
         <article class="card card--edu">
           <h3>BSc in Informatics / Computer Engineering</h3>
           <p class="card__sub">University of Aveiro</p>
-          <p class="card__date">CHANGE_ME – CHANGE_ME</p>
-          <p>Foundations in systems, networking and programming. <!-- TODO: adjust degree name / dates --></p>
+          <p class="card__date">2021 – 2024</p>
+          <p>Covered OOP, web programming, distributed systems,
+relational and non-relational databases, networks, machine learning,
+software design patterns, and full-stack development.</p>
         </article>
       </div>
     </section>
 
-    <!-- ───────────────────────────── CERTIFICATES ───────────────────────────── -->
-    <section id="certificates" class="section">
-      <div class="section__head">
-        <span class="eyebrow">$ ls certs/</span>
-        <h2 class="section__title">Certificates</h2>
+ <!-- ───────────────────────────── CERTIFICATES ───────────────────────────── -->
+<section id="certificates" class="section">
+  <div class="section__head">
+    <span class="eyebrow">$ ls certs/</span>
+    <h2 class="section__title">Certificates</h2>
+  </div>
+  <div class="section__body grid grid--2">
+
+    <!-- CBFRPro -->
+    <article class="card card--cert">
+      <h3>
+        <a href="assets/certs/Toms_Matos_Certified_Binary_Fuzzing_amp_Reversing_Professional_CBFRPro.pdf" target="_blank" rel="noopener noreferrer">
+          CBFRPro ↗
+        </a>
+      </h3>
+      <p class="card__sub">Certified Binary Fuzzing &amp; Reversing Professional</p>
+      <p class="card__meta">The SecOps Group · Jul 2026 · <span class="mono">#11682249</span></p>
+      
+      <div class="cert-preview">
+        <iframe 
+          src="assets/certs/Toms_Matos_Certified_Binary_Fuzzing_amp_Reversing_Professional_CBFRPro.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+          width="100%" 
+          height="345px" 
+          loading="lazy"
+          title="CBFRPro Certificate Preview">
+        </iframe>
       </div>
-      <div class="section__body grid grid--2">
-        <article class="card card--cert">
-          <h3>CBFRPro</h3>
-          <p class="card__sub">Certified Binary Fuzzing &amp; Reversing Professional</p>
-          <p class="card__meta">The SecOps Group · Jul 2026 · <span class="mono">#11682249</span></p>
-          <p>Hands-on fuzzing methodology — AFL++ instrumentation, persistent-mode harnesses, crash triage and binary-only fuzzing.</p>
-        </article>
-        <!-- TODO: add more certificates as cards like the one above -->
+
+      <p>Hands-on fuzzing methodology, AFL++ instrumentation, persistent-mode harnesses, crash triage, and binary reversing.</p>
+    </article>
+
+    <!-- API Security -->
+    <article class="card card--cert">
+      <h3>
+        <a href="assets/certs/apisec.pdf" target="_blank" rel="noopener noreferrer">
+          API Security Fundamentals ↗
+        </a>
+      </h3>
+      <p class="card__sub">API Security Certification</p>
+      <p class="card__meta">APIsec University</p>
+      
+      <div class="cert-preview">
+        <iframe 
+          src="assets/certs/apisec.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+          width="100%" 
+          height="345px" 
+          loading="lazy"
+          title="API Security Certificate Preview">
+        </iframe>
       </div>
-    </section>
+
+      <p>Hands-on REST API security analysis, vulnerability identification, OWASP API Top 10 mitigation, and secure design practices.</p>
+    </article>
+
+    <!-- Cambridge English -->
+    <article class="card card--cert">
+      <h3>
+        <a href="assets/certs/cambridgeEnglish.jpeg" target="_blank" rel="noopener noreferrer">
+          Cambridge English ↗
+        </a>
+      </h3>
+      <p class="card__sub">English Language Proficiency</p>
+      <p class="card__meta">Cambridge Assessment English</p>
+      
+      <div class="cert-preview">
+        <a href="assets/certs/cambridgeEnglish.jpeg" target="_blank" rel="noopener noreferrer">
+          <img 
+            src="assets/certs/cambridgeEnglish.jpeg" 
+            alt="Cambridge English Certificate" 
+            class="cert-thumb" 
+            style="width: 100%; height: 345px; object-fit: cover; object-position: top; display: block;" 
+          />
+        </a>
+      </div>
+
+      <p>Certified English language proficiency qualification demonstrating advanced communication skills in professional environments.</p>
+    </article>
+
+  </div>
+</section>
 
     <!-- ───────────────────────────── CTF ───────────────────────────── -->
     <section id="ctf" class="section">
@@ -339,7 +441,7 @@
 
   <footer class="footer">
     <span>&copy; <span id="year"></span> tmato.es</span>
-    <span class="footer__note">built from a terminal, deployed on GitHub Pages</span>
+    <!-- <span class="footer__note">built from a terminal, deployed on GitHub Pages</span> -->
   </footer>
 
   <script src="assets/js/main.js"></script>
