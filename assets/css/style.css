@@ -203,7 +203,9 @@ a:hover { color: var(--tomato-deep); }
 
 .hl { color: var(--leaf); font-weight: 500; }
 code, .mono { font-family: var(--font-mono); color: var(--tomato); font-size: .92em; }
-
+.about p {
+  text-align: justify;
+}
 /* about stats */
 .stats { list-style: none; padding: 0; margin: 1.75rem 0 0; display: flex; flex-wrap: wrap; gap: 14px; }
 .stats li {
