@@ -62,7 +62,7 @@
         <a href="#education">EDUCATION</a>
         <a href="#certificates">CERTIFICATES</a>
         <a href="#ctf">CTF</a>
-        <a href="#projects">PROJECTS</a>
+        <!-- <a href="#projects">PROJECTS</a> -->
         <a href="#contact">CONTACT</a>
       </nav>
 
@@ -213,7 +213,7 @@
         <article class="card">
           <h3>Forensics / Web</h3>
           <ul class="tags">
-            <li>Wireshark</li><li>binwalk</li><li>Burp Suite</li><li>CyberChef</li>
+            <li>Wireshark</li><li>binwalk</li><li>Burp Suite</li><li>CyberChef</li><li>Nmap</li><li>SQLMap</li>
           </ul>
         </article>
       </div>
@@ -284,9 +284,13 @@ Lading (BoL).</p>
           <h3>BSc in Informatics / Computer Engineering</h3>
           <p class="card__sub">University of Aveiro</p>
           <p class="card__date">2021 – 2024</p>
-          <p>Covered OOP, web programming, distributed systems,
+       
+          <ul>
+            <li>Covered OOP, web programming, distributed systems,
 relational and non-relational databases, networks, machine learning,
-software design patterns, and full-stack development.</p>
+software design patterns, and full-stack development.</li>
+           
+          </ul>
         </article>
       </div>
     </section>
@@ -372,37 +376,99 @@ software design patterns, and full-stack development.</p>
   </div>
 </section>
 
-    <!-- ───────────────────────────── CTF ───────────────────────────── -->
-    <section id="ctf" class="section">
-      <div class="section__head">
-        <span class="eyebrow">$ ./run_ctf.sh</span>
-        <h2 class="section__title">CTF</h2>
-      </div>
-      <div class="section__body">
-        <p class="section__lead">CTFs are where I sharpen the practical edge — mostly reverse engineering and pwn, occasionally crypto and forensics. A few pieces of work I'm happy with:</p>
-        <div class="grid grid--2">
-          <article class="card">
-            <h3>Magecart skimmer analysis</h3>
-            <p>De-obfuscated a live web skimmer (base64 + rotation, AES-128-CBC exfil), documented IOCs and breach-notification implications for CSIRT reporting.</p>
-          </article>
-          <article class="card">
-            <h3>libc-2.31 ROP chain</h3>
-            <p>Stack overflow exploited under IBT constraints — ret2plt <code>puts@PLT</code> leak with careful PLT-entry selection to satisfy endbr checks.</p>
-          </article>
-          <article class="card">
-            <h3>nanoGPT challenge</h3>
-            <p>Reconstructed a byte-level language model, wrangled heteronym special tokens and beam-search decoding to recover the flag.</p>
-          </article>
-          <article class="card">
-            <h3>Controller-cipher (boroCTF)</h3>
-            <p>Reverse-engineered a PlayStation controller button-encoding scheme into a decodable cipher.</p>
-          </article>
+<!-- ───────────────────────────── CTF ───────────────────────────── -->
+<section id="ctf" class="section">
+  <div class="section__head">
+    <span class="eyebrow">$ ./run_ctf.sh</span>
+    <h2 class="section__title">CTF Competitions</h2>
+  </div>
+  <div class="section__body">
+    <p class="section__lead">CTFs are where I sharpen my practical edge, mostly focused on reverse engineering, pwn, cryptography, and binary analysis.</p>
+
+    <!-- Subsection: On-site Competitions & Hosting -->
+    <!-- <h3 style="font-size: 1.4rem; margin: 2rem 0 1.25rem; color: var(--foreground);">On-Site Competitions &amp; Events</h3> -->
+    <div class="grid grid--2">
+
+      <!-- SALT CTF -->
+      <article class="card card--ctf">
+        <div class="ctf-img-wrap">
+          <img src="assets/img/saltctf.jpg" alt="SALT CTF Event" class="ctf-thumb" />
         </div>
-      </div>
-    </section>
+        <div class="ctf-card-content">
+          <h3>SALT CTF</h3>
+          <p class="card__sub"><span class="hl">Organizer &amp; Challenge Author</span></p>
+          <p class="card__meta">NUAC Team · May 2026</p>
+        </div>
+      </article>
+
+      <!-- HACKDAY.FR -->
+      <article class="card card--ctf">
+        <div class="ctf-img-wrap">
+          <img src="assets/img/hackday.jpeg" alt="HACKDAY.FR Finals" class="ctf-thumb" />
+        </div>
+        <div class="ctf-card-content">
+          <h3>HACKDAY.FR Finals</h3>
+          <p class="card__sub"><span class="hl">13th place</span></p>
+          <p class="card__meta">ESIEE · Paris, France · 2025</p>
+        </div>
+      </article>
+
+      <!-- BSides Porto -->
+      <article class="card card--ctf">
+        <div class="ctf-img-wrap">
+          <img src="assets/img/bsides.jpeg" alt="BSides Porto CTF" class="ctf-thumb" />
+        </div>
+        <div class="ctf-card-content">
+          <h3>BSides Porto</h3>
+          <p class="card__sub"><span class="hl">5th place</span></p>
+          <p class="card__meta">ISEP · Porto, Portugal · 2025</p>
+        </div>
+      </article>
+
+      <!-- ACM&xSTF -->
+      <article class="card card--ctf">
+        <div class="ctf-img-wrap">
+          <img src="assets/img/feup.jpeg" alt="ACM & xSTF CTF" class="ctf-thumb" />
+        </div>
+        <div class="ctf-card-content">
+          <h3>ACM &amp; xSTF</h3>
+          <p class="card__sub"><span class="hl">3rd place 🥉</span></p>
+          <p class="card__meta">FEUP · Porto, Portugal · 2025</p>
+        </div>
+      </article>
+
+    </div>
+ 
+    <!-- Subsection: Highlights & Writeups -->
+    <!-- <h3 style="font-size: 1.25rem; margin: 2.5rem 0 1rem; color: var(--foreground);">Notable Challenges &amp; Exploits</h3>
+    <div class="grid grid--2">
+      <article class="card">
+        <h3>Magecart skimmer analysis</h3>
+        <p>De-obfuscated a live web skimmer (base64 + rotation, AES-128-CBC exfil), documented IOCs and breach-notification implications for CSIRT reporting.</p>
+      </article>
+
+      <article class="card">
+        <h3>libc-2.31 ROP chain</h3>
+        <p>Stack overflow exploited under IBT constraints — ret2plt <code>puts@PLT</code> leak with careful PLT-entry selection to satisfy endbr checks.</p>
+      </article>
+
+      <article class="card">
+        <h3>nanoGPT challenge</h3>
+        <p>Reconstructed a byte-level language model, wrangled heteronym special tokens and beam-search decoding to recover the flag.</p>
+      </article>
+
+      <article class="card">
+        <h3>Controller-cipher (boroCTF)</h3>
+        <p>Reverse-engineered a PlayStation controller button-encoding scheme into a decodable cipher.</p>
+      </article>
+    </div> -->
+
+  </div>
+</section>
+
 
     <!-- ───────────────────────────── PROJECTS ───────────────────────────── -->
-    <section id="projects" class="section">
+    <!-- <section id="projects" class="section">
       <div class="section__head">
         <span class="eyebrow">$ git log --projects</span>
         <h2 class="section__title">Projects</h2>
@@ -413,14 +479,13 @@ software design patterns, and full-stack development.</p>
           <p>Virtual FIDO2 authenticator backed by an Intel SGX enclave: sealed SQLite credential store, CTAP2 (incl. discoverable credentials), a HID interface forwarding to the enclave service, and DCAP-based attestation.</p>
           <p class="card__links"><a href="https://github.com/CHANGE_ME" target="_blank" rel="noopener">[ repo ]</a></p>
         </article>
-        <!-- TODO: add more projects — duplicate a card block -->
         <article class="card card--proj card--ghost">
           <h3>More coming soon</h3>
           <p>Write-ups and tooling get published as I clean them up. Check the GitHub for the latest.</p>
           <p class="card__links"><a href="https://github.com/CHANGE_ME" target="_blank" rel="noopener">[ github ]</a></p>
         </article>
       </div>
-    </section>
+    </section> -->
 
     <!-- ───────────────────────────── CONTACT ───────────────────────────── -->
     <section id="contact" class="section">
