@@ -445,3 +445,11 @@ body { transition: background-color .2s ease, color .2s ease; }
   font-size: 0.95rem;
   margin-top: 0.25rem;
 }
+.btn-pill--projects {
+  border-color: oklch(0.62 0.14 145);
+  color:        oklch(0.62 0.14 145);
+}
+.btn-pill--projects:hover {
+  background:   oklch(0.62 0.14 145);
+  color:        #0e0e10; /* or var(--background) if you have it */
+}

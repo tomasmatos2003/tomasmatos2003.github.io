@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects · tmato.es</title>
+  <meta name="description" content="Projects by Tomás Matos — SGX/FIDO2, reverse engineering, cryptography, CTF." />
+  <meta name="theme-color" content="#2e2e33" />
+
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4" />
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    /* ── page-level overrides ── */
+    .projects-hero {
+      padding: 2rem 1.5rem 0rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .projects-hero .eyebrow {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .projects-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin: 0 0 1rem;
+      line-height: 1.1;
+    }
+    .projects-hero p {
+      max-width: 60ch;
+      opacity: 0.7;
+      margin: 0;
+    }
+
+    /* ── category label ── */
+    .proj-category {
+      font-family: 'Jersey 25', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin: 3rem 0 1rem;
+    }
+
+    /* ── grid tightening for this page ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    /* ── tag badges ── */
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+    .proj-tags span {
+      font-family: 'Jersey 25', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border, rgba(255,255,255,0.12));
+      border-radius: 3px;
+      opacity: 0.7;
+    }
+
+    /* ── card flex column so tags stick to bottom ── */
+    .pcard {
+      display: flex;
+      flex-direction: column;
+    }
+    .pcard p {
+      margin: 0.4rem 0 0;
+      font-size: 0.88rem;
+      opacity: 0.75;
+      flex: 1;
+    }
+    .pcard h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    /* grade pill */
+    .grade {
+      font-family: 'Jersey 25', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--accent, #e0533a);
+      margin-top: 0.2rem;
+      display: block;
+    }
+
+    /* CTF placement highlight reuse */
+    .hl { color: var(--accent, #e0533a); font-weight: 600; }
+
+    /* back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Jersey 25', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      margin-bottom: 1.5rem;
+    }
+    .back-link:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+  <!-- ── NAVBAR ── -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand"><span class="nav__tom">🍅</span>tmatos</a>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light or dark theme">
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="17" height="17" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+          </svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="17" height="17" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.5 14.2A8.4 8.4 0 0 1 9.8 3.5a8.4 8.4 0 1 0 10.7 10.7z"/>
+          </svg>
+        </button>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html#about">ABOUT</a>
+        <a href="index.html#skills">SKILLS</a>
+        <a href="index.html#experience">EXPERIENCE</a>
+        <a href="index.html#education">EDUCATION</a>
+        <a href="index.html#certificates">CERTIFICATES</a>
+        <a href="index.html#ctf">CTF</a>
+        <a href="index.html#publications">PUBLICATIONS</a>
+        <a href="projects.html">PROJECTS</a>
+        <a href="index.html#contact">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="projects-hero">
+      <a href="index.html" class="back-link">← back</a>
+      <!-- <span class="eyebrow">$ git log --all --projects</span> -->
+      <!-- <h1>Projects</h1> -->
+      <p>A mix of thesis work, coursework, and side tinkering</p>
+    </div>
+
+    <div style="max-width:900px; margin:0 auto; padding: 0 1.5rem 5rem;">
+
+      <!-- ── MASTER'S ── -->
+      <p class="proj-category">$ ls masters/</p>
+      <div class="proj-grid">
+
+        <article class="card pcard">
+          <h3>Securing FIDO2 Credentials Using Intel SGX</h3>
+          <span class="grade">Master's Thesis · 2025–2026</span>
+          <p>Virtual FIDO2 authenticator backed by an Intel SGX enclave: sealed SQLite credential store, CTAP2 with discoverable credentials, HID interface forwarding to the enclave service, and DCAP-based remote attestation. Supports cross-device credential migration.</p>
+          <div class="proj-tags">
+            <span>C</span><span>Intel SGX</span><span>FIDO2 / CTAP2</span><span>SQLite</span><span>DCAP</span><span>EDL/ECALL</span>
+          </div>
+          <p class="card__links" style="padding-top:0.75rem;"><a href="assets/docs/thesis.pdf" target="_blank" rel="noopener">[ doc ]</a></p>
+        </article>
+
+        <article class="card pcard">
+          <h3>Attacks on FIDO2 CTAP — Survey & PoC</h3>
+          <span class="grade">Seminar</span>
+          <p>Researched MitM attacks on CTAP DH key exchange and insecure option abuse. Built a custom CTAP client to reproduce session hijacking against real authenticators (YubiKey, Feitian).</p>
+          <div class="proj-tags"><span>Python</span><span>CTAP</span><span>CBOR</span><span>MitM</span></div>
+        </article>
+
+
+
+        <article class="card pcard">
+          <h3>Selective Identity Disclosure</h3>
+          <span class="grade">Applied Cryptography · 19.5/20</span>
+          <p>Four-app system for Digital Citizen Card holders to selectively disclose identity attributes. Handles issuance, selective DCC generation, digital signatures, and attribute hashing.</p>
+          <div class="proj-tags"><span>Python</span><span>RSA</span><span>X.509</span><span>PyKCS11</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Shuffle AES Implementation</h3>
+          <span class="grade">Applied Cryptography · 17/20</span>
+          <p>Modified AES variant in C, then reproduced using NI assembly instructions. Validated against OpenSSL; PBKDF2 for key derivation.</p>
+          <div class="proj-tags"><span>C</span><span>AES-NI</span><span>Assembly</span><span>OpenSSL</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Vulnerable Social Network</h3>
+          <span class="grade">Vuln. Analysis · 18/20</span>
+          <p>Intentionally introduced XSS, SQLi, CSRF, template injection, and crypto weaknesses into a social network app; then performed offensive analysis of other groups' apps.</p>
+          <div class="proj-tags"><span>Web Security</span><span>OWASP</span><span>Offensive</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Malware Analysis — Tampered Linux ELF</h3>
+          <span class="grade">Reverse Engineering · 19/20</span>
+          <p>Static analysis and code inspection to uncover hidden payloads and evasion techniques in a Linux binary disguised as a game. Analysed execution flow, network activity, and API usage.</p>
+          <div class="proj-tags"><span>Ghidra</span><span>strace</span><span>ltrace</span><span>objdump</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Malicious Android App Reverse</h3>
+          <span class="grade">Reverse Engineering · 16/20</span>
+          <p>Static and dynamic analysis of a trojanised Aveiro tourism app. Uncovered hidden functionality via permission analysis, execution flow tracing, and API monitoring.</p>
+          <div class="proj-tags"><span>Frida</span><span>APKTool</span><span>JEB</span><span>OWASP ZAP</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Embedded Thermal Controller RE</h3>
+          <span class="grade">Lab Project · 16/20</span>
+          <p>Reverse-engineered a PIC32MX-based thermal chamber: temperature regulation logic, RS-232 protocol, EEPROM usage, and dual-zone heating via OC1/OC2 outputs.</p>
+          <div class="proj-tags"><span>C</span><span>PIC32MX</span><span>RS-232</span><span>EEPROM</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Redundant Network Infrastructure</h3>
+          <span class="grade">Networking · 20/20</span>
+          <p>High-availability network with load balancers, stateful firewalls, VLANs, DMZ, and Internet connectivity in GNS3. Validated redundancy, traffic segmentation, and DDoS mitigation.</p>
+          <div class="proj-tags"><span>GNS3</span><span>pfSense</span><span>HAProxy</span><span>Cisco IOS</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>CTF — pwn &amp; web</h3>
+          <span class="grade">Vuln. Analysis · 17/20</span>
+          <p>First hands-on CTF as part of the master's programme. Solved pwn and web challenges; first exposure to CTF-style offensive security.</p>
+          <div class="proj-tags"><span>GDB</span><span>Burp Suite</span><span>Kali Linux</span></div>
+        </article>
+
+      </div>
+
+      <!-- ── BACHELOR'S ── -->
+      <p class="proj-category">$ ls bachelors/</p>
+      <div class="proj-grid">
+
+        <article class="card pcard">
+          <h3>Website Detective</h3>
+          <span class="grade">Final Degree Project · 18/20</span>
+          <p>Full-stack domain analyser returning a quality/trust score. Distributed workers cover blocklists, cookies, SSL/TLS, security.txt, page rank, carbon footprint. ML classifier labels domains Good/Bad.</p>
+          <div class="proj-tags"><span>Python</span><span>Django</span><span>React</span><span>MongoDB</span><span>Celery</span><span>Docker</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>URL Malicious/Benign Classifier</h3>
+          <span class="grade">Machine Learning · 16.5/20</span>
+          <p>URL classification using page content vectors and sentiment polarity. Evaluated LR, NN, Gradient Boosting, Random Forest, and KNN with confusion matrices and learning curves.</p>
+          <div class="proj-tags"><span>Python</span><span>scikit-learn</span><span>ML</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Face Detection via Transfer Learning</h3>
+          <span class="grade">Machine Learning · 17.1/20</span>
+          <p>Pre-trained CNN fine-tuned to detect faces and predict bounding boxes from varied real-world images. Replaced initial custom CNN due to compute constraints.</p>
+          <div class="proj-tags"><span>Python</span><span>CNN</span><span>Transfer Learning</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>DigDug AI Agent</h3>
+          <span class="grade">Artificial Intelligence · 16.8/20</span>
+          <p>A* agent for DigDug. At each step a graph is constructed, shortest paths to enemies computed, and undesired positions penalised with increased traversal costs.</p>
+          <div class="proj-tags"><span>Python</span><span>A*</span><span>Game AI</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Sunday Crypto</h3>
+          <span class="grade">Full-Stack · 16/20</span>
+          <p>Real-time cryptocurrency tracker with buy/sell and automated price-triggered actions. CoinGecko API, Spring Boot, MySQL, RabbitMQ, WebSockets, Docker.</p>
+          <div class="proj-tags"><span>Java</span><span>Spring Boot</span><span>RabbitMQ</span><span>WebSockets</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>Karaoke — Distributed Audio System</h3>
+          <span class="grade">Distributed Systems · 14/20</span>
+          <p>Client-server audio source separation. Chunks distributed to clients for processing (bass, vocals, drums); results reassembled server-side for download.</p>
+          <div class="proj-tags"><span>Python</span><span>Sockets</span><span>Flask</span></div>
+        </article>
+
+      </div>
+
+      <!-- ── CTF HIGHLIGHTS ── -->
+      <!-- <p class="proj-category">$ ls ctf/</p>
+      <div class="proj-grid">
+
+        <article class="card pcard">
+          <h3>SALT CTF</h3>
+          <span class="grade"><span class="hl">Organizer &amp; Challenge Author</span> · NUAC · May 2026</span>
+          <p>Authored Crypto, OSINT, and Reverse Engineering challenges for the on-site SALT CTF organised by the University of Aveiro cybersecurity club.</p>
+          <div class="proj-tags"><span>Challenge Design</span><span>Crypto</span><span>Reversing</span><span>OSINT</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>HACKDAY.FR Finals</h3>
+          <span class="grade"><span class="hl">13th place</span> · ESIEE Paris · 2025</span>
+          <p>International on-site finals at ESIEE, Paris. Competed as part of the NUAC team across a full-day competition.</p>
+          <div class="proj-tags"><span>On-site</span><span>International</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>BSides Porto</h3>
+          <span class="grade"><span class="hl">5th place</span> · ISEP Porto · 2025</span>
+          <p>On-site CTF at the BSides Porto security conference. Top-5 finish competing against professional teams.</p>
+          <div class="proj-tags"><span>On-site</span><span>Mixed categories</span></div>
+        </article>
+
+        <article class="card pcard">
+          <h3>ACM &amp; xSTF</h3>
+          <span class="grade"><span class="hl">3rd place 🥉</span> · FEUP Porto · 2025</span>
+          <p>On-site CTF at FEUP. Bronze finish in a competitive field of university and professional teams.</p>
+          <div class="proj-tags"><span>On-site</span><span>Mixed categories</span></div>
+        </article>
+
+      </div>
+
+    </div> -->
+  </main>
+
+  <footer class="footer">
+    <span>&copy; <span id="year"></span> tmato.es</span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
