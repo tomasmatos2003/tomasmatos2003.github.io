@@ -496,19 +496,50 @@ body { transition: background-color .2s ease, color .2s ease; }
 
 /* Mobile: toggle class to open */
 @media (max-width: 640px) {
+  /* Add a chevron to signal expandability */
+  .nav__dropdown-toggle::after {
+    content: " ▾";
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+  .nav__dropdown.open .nav__dropdown-toggle::after {
+    content: " ▴";
+  }
+
+  /* Sub-links: tighter indent, no double border */
   .nav__dropdown-menu {
     position: static;
     box-shadow: none;
     border: none;
     border-radius: 0;
-    background: var(--secondary);
+    background: transparent;
     padding: 0;
   }
 
   .nav__dropdown.open .nav__dropdown-menu { display: block; }
 
   .nav__dropdown-menu a {
-    padding: 12px 2.5rem; /* indent sub-links */
+    padding: 10px 1.5rem 10px 2.5rem;
     border-top: 1px solid var(--border);
+    font-size: 0.72rem;
+    color: var(--muted-foreground);
+    border-radius: 0;
+    width: 100%;
+  }
+
+  /* Remove the orphaned gap between dropdowns and plain links */
+  .nav__links a,
+  .nav__dropdown-toggle {
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    width: 100%;
+    display: block;
+    padding: 14px 1.5rem;
+  }
+
+  /* First item shouldn't double-border with the nav bottom border */
+  .nav__links > *:first-child > a,
+  .nav__links > a:first-of-type {
+    border-top: none;
   }
 }
