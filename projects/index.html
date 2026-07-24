@@ -147,18 +147,33 @@
           <span></span><span></span><span></span>
         </button>
       </div>
+
       <nav class="nav__links" id="navLinks">
-        <a href="../#about">ABOUT</a>
-        <a href="../#skills">SKILLS</a>
-        <a href="../#tools">TOOLS</a>
-        <a href="../#experience">EXPERIENCE</a>
-        <a href="../#education">EDUCATION</a>
-        <a href="../#certificates">CERTIFICATES</a>
-        <a href="../#ctf">CTF</a>
-        <a href="../#publications">PUBLICATIONS</a>
-        <a href="/projects">PROJECTS</a>
-        <a href="../#contact">CONTACT</a>
-      </nav>
+      <div class="nav__dropdown">
+        <a href="../#about" class="nav__dropdown-toggle">ABOUT</a>
+        <div class="nav__dropdown-menu">
+          <!-- <a href="#skills">ABOUT</a> -->
+          <a href="../#skills">SKILLS</a>
+          <a href="../#tools">TOOLS</a>
+        </div>
+      </div>
+      <div class="nav__dropdown">
+        <a href="../#experience" class="nav__dropdown-toggle">EXPERIENCE</a>
+        <div class="nav__dropdown-menu">
+          <a href="../#ctf">CTF</a>
+          <a href="../#publications">PUBLICATIONS</a>
+        </div>
+      </div>
+      <div class="nav__dropdown">
+        <a href="../#education" class="nav__dropdown-toggle">EDUCATION</a>
+        <div class="nav__dropdown-menu">
+          <a href="../#certificates">CERTIFICATES</a>
+        </div>
+      </div>
+      <a href="/projects">PROJECTS</a>
+      <a href="../#contact">CONTACT</a>
+    </nav>
+    
     </div>
   </header>
 

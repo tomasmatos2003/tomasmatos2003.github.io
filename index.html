@@ -53,22 +53,31 @@
           <span></span><span></span><span></span>
         </button>
       </div>
-
-      <nav class="nav__links" id="navLinks">
-        <a href="#about">ABOUT</a>
-        <a href="#skills">SKILLS</a>
-        <a href="#tools">TOOLS</a>
-        <a href="#experience">EXPERIENCE</a>
-        <a href="#education">EDUCATION</a>
-        <a href="#certificates">CERTIFICATES</a>
-        <a href="#ctf">CTF</a>
-        <a href="#publications">PUBLICATIONS</a>
-        <!-- <a href="#projects">PROJECTS</a> -->
-        <a href="/projects/">PROJECTS</a>
-
-        <a href="#contact">CONTACT</a>
-      </nav>
-
+    <nav class="nav__links" id="navLinks">
+      <div class="nav__dropdown">
+        <a href="#about" class="nav__dropdown-toggle">ABOUT</a>
+        <div class="nav__dropdown-menu">
+          <!-- <a href="#skills">ABOUT</a> -->
+          <a href="#skills">SKILLS</a>
+          <a href="#tools">TOOLS</a>
+        </div>
+      </div>
+      <div class="nav__dropdown">
+        <a href="#experience" class="nav__dropdown-toggle">EXPERIENCE</a>
+        <div class="nav__dropdown-menu">
+          <a href="#ctf">CTF</a>
+          <a href="#publications">PUBLICATIONS</a>
+        </div>
+      </div>
+      <div class="nav__dropdown">
+        <a href="#education" class="nav__dropdown-toggle">EDUCATION</a>
+        <div class="nav__dropdown-menu">
+          <a href="#certificates">CERTIFICATES</a>
+        </div>
+      </div>
+      <a href="/projects/">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
     </div>
   </header>
 
@@ -112,15 +121,15 @@
     <h2 class="section__title">About</h2>
   </div>
   <div class="section__body about">
-<p class="section__lead">
+<p >
   I'm <strong>Tomás Matos</strong>, a cybersecurity graduate from the University of Aveiro, Portugal, passionate about understanding systems from the network level down to the binary, with a special interest in reverse engineering, malware analysis, binary exploitation, web security, and applied cryptography.
 </p>
 
-<p>
+<p class="section__lead">
   During my two years in the Cybersecurity Master's program, I developed a strong foundation in offensive security by competing in CTFs and solving hands-on challenges on platforms like picoCTF to build practical exploitation skills. At the same time, I explored defensive security and architecture design, focusing on threat modeling and secure solution engineering, as demonstrated in my Master's thesis using a Trusted Execution Environment (TEE) to anchor a secure application.
 </p>
 
-<p>
+<p class="section__lead">
 I also hold a Bachelor's degree in Software Engineering from the University of Aveiro. Building a strong foundation in computer science, networking, software development, and testing. It was what initially sparked my passion for cybersecurity!</p>
 
     <!-- <p>

@@ -6,7 +6,7 @@
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  // Mobile nav toggle
+// Mobile nav toggle
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
 
@@ -16,15 +16,27 @@
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
 
-    // Close the menu after tapping a link (mobile)
+    // Close only on leaf links (not dropdown toggles)
     links.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        links.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
+      var a = e.target.closest("a");
+      if (!a) return;
+
+      if (a.classList.contains("nav__dropdown-toggle")) {
+        var parent = a.closest(".nav__dropdown");
+        var wasOpen = parent.classList.contains("open");
+        links.querySelectorAll(".nav__dropdown").forEach(function (d) {
+          d.classList.remove("open");
+        });
+        if (!wasOpen) parent.classList.add("open");
+        // no preventDefault — let the href="#about" navigate normally
+        return;
       }
+
+      // Real link — close the whole nav (mobile)
+      links.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
     });
   }
-
   // Theme toggle (dark is the default; choice persists)
   var themeBtn = document.getElementById("themeToggle");
   var root = document.documentElement;
